@@ -78,7 +78,7 @@
     }
   }
 
-  // 📱 Responsive styles
+
   @media (max-width: 768px) {
     .search {
       flex-direction: column;
