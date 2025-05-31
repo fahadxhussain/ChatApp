@@ -1,108 +1,169 @@
-.detail{
-    flex: 1;
+.detail {
+  flex: 1;
 
-    .user{
-        padding: 30px 20px;
+  .user {
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #dddddd35;
+
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+
+  .info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    .option {
+      .title {
         display: flex;
-        flex-direction: column;
         align-items: center;
-        gap: 10px;
-        border-bottom: 1px solid #dddddd35;
+        justify-content: space-between;
 
-        img{
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-             object-fit: cover;
-              
+        img {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          background-color: rgba(17, 25, 40, 0.3);
+          padding: 10px;
+          cursor: pointer;
         }
-    }
+      }
 
-    .info{
-        padding: 20px;
+      .photos {
         display: flex;
         flex-direction: column;
-        gap: 25px;
+        gap: 20px;
+        margin-top: 20px;
 
-        .option{
-            .title{
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
+        .photoItem {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
 
-                img{
-                    width: 30px;
-                    height: 30px;
-                    border-radius: 50%;
-                    background-color: rgba(17, 25, 40, 0.3);
-                    padding: 10px;
-                    cursor: pointer;
-                }
+          .photoDetail {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            img {
+              width: 60px;
+              height: 40px;
+              border-radius: 5px;
+              object-fit: cover;
             }
 
-            .photos{
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-                margin-top: 20px;
-
-                .photoItem{
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-
-                    .photoDetail{
-                        display: flex;
-                        align-items: center;
-                        gap: 20px;
-
-                        img{
-                            width: 60px;
-                            height: 40px;
-                            border-radius: 5px;
-                            object-fit: cover;
-                        }
-
-                        span{
-                            font-size: 13px;
-                            font-weight: 300;
-                            color: lightgray;
-                        }
-                    }
-                    .icon{
-                        width: 30px;
-                        height: 30px;
-                        border-radius: 50%;
-                        background-color: rgba(17, 25, 40, 0.3);
-                        padding: 8px;
-                        cursor: pointer;
-                    }
-                }
+            span {
+              font-size: 13px;
+              font-weight: 300;
+              color: lightgray;
             }
-        }
+          }
 
-        button{
-            padding: 10px 20px;
-            background-color: rgba(230, 74, 105, 0.6);
-            color: white;
-            border: none;
-            border-radius: 10px;
+          .icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: rgba(17, 25, 40, 0.3);
+            padding: 8px;
             cursor: pointer;
-
-            &:hover{
-                background-color: rgba(230, 74, 105, 0.86);
-            }
-
-            &.logout{
-                padding: 10px;
-                background-color: #1a73e8;
-
-                &:hover{
-                    opacity: .8;
-                }
-            }
+          }
         }
-  
+      }
     }
-    
+
+    button {
+      padding: 10px 20px;
+      background-color: rgba(230, 74, 105, 0.6);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba(230, 74, 105, 0.86);
+      }
+
+      &.logout {
+        padding: 10px;
+        background-color: #1a73e8;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+
+  // 📱 Responsive Styles
+  @media (max-width: 768px) {
+    .user {
+      padding: 20px;
+      img {
+        width: 70px;
+        height: 70px;
+      }
+    }
+
+    .info {
+      padding: 15px;
+      gap: 20px;
+
+      .option {
+        .title {
+          img {
+            width: 24px;
+            height: 24px;
+            padding: 6px;
+          }
+        }
+
+        .photos {
+          gap: 15px;
+
+          .photoItem {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+
+            .photoDetail {
+              gap: 10px;
+
+              img {
+                width: 50px;
+                height: 35px;
+              }
+
+              span {
+                font-size: 12px;
+              }
+            }
+
+            .icon {
+              align-self: flex-end;
+              width: 24px;
+              height: 24px;
+              padding: 6px;
+            }
+          }
+        }
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        font-size: 14px;
+      }
+    }
+  }
 }
