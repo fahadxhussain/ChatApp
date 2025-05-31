@@ -35,7 +35,7 @@ const App = () => {
       {currentUser?(
         <>
         <List/>
-        {chatId && <Chat setShowDetail = {setShowDetail}/>}
+        <Chat setShowDetail = {setShowDetail}/>
         {chatId && showDetail && <Detail/>}
         </>
       ):(

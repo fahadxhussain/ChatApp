@@ -102,9 +102,7 @@ function Detail() {
                 <button
                 onClick={handleBlock}
                 >{isCurrentUserBlocked? "You are Blocked" : isReceiverBlocked? "Unblock User" : "Block User"}</button>
-                <button className='logout'
-                onClick={()=> auth.signOut()}
-                >Logout</button>
+                
             </div>
         </div>
     )
