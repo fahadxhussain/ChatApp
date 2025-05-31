@@ -102,25 +102,29 @@ function ChatList() {
 
             {addMode && <AddUser />}
 
-            <button
-                onClick={() => auth.signOut()}
-                style={{
-                position: 'fixed',
-                bottom: '30px',
-                left: '175px',
-                transform: 'translateX(-50%)',
-                width: '10%',
-                padding: '10px',
-                backgroundColor: '#dc3545',
-                color: '#fff',
-                border: 'none',
-                borderRadius: '6px',
-                fontSize: '14px',
-                cursor: 'pointer',
-                zIndex: 999
+             <button
+            onClick={() => auth.signOut()}
+            style={{
+            position: 'absolute',  // Changed from 'fixed' to 'absolute'
+            bottom: '30px',
+            left: '50%',  // Changed from fixed pixel value to percentage
+            transform: 'translateX(-50%)',
+            width: '150px',  // Changed from percentage to fixed width
+            padding: '10px',
+            backgroundColor: '#dc3545',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '6px',
+            fontSize: '14px',
+            cursor: 'pointer',
+            zIndex: 999,
+            transition: 'all 0.3s ease',  // Added smooth transition
+            ':hover': {
+                backgroundColor: '#c82333'  // Darker shade on hover
+            }
             }}
             >
-            Logout
+                Logout
             </button>
         </div>
     );

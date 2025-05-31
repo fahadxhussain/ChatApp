@@ -36,7 +36,7 @@ body {
   .container {
     width: 90vw;
     height: 92vh;
-    flex-direction: column;
+    flex-direction: row;
   }
 }
 
@@ -50,7 +50,6 @@ body {
     width: 100%;
     height: 95vh;
     border-radius: 0.75rem;
-    flex-direction: column;
   }
 }
 
