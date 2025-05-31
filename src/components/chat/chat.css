@@ -1,5 +1,5 @@
 .chat{
-    flex: 2;
+    flex: 2.4;
     border-left: 1px solid #dddddd35;
     border-right: 1px solid #dddddd35;
     height: 100%;
@@ -92,10 +92,11 @@
                 gap: 5px;
 
                 img{
-                    width: 100%;
+                    width: 80%;
                     height: 300px;
                     border-radius: 12px;
                     object-fit: cover;
+                    align-self: flex-end;
                 }
 
                 p{
@@ -161,6 +162,11 @@
             border-radius: 12px;
             outline: none;
             cursor: pointer;
+
+            &:disabled{
+                background-color: #5182fe47;
+                cursor:not-allowed
+            }
         }
     }
 }
