@@ -68,43 +68,46 @@ function Login() {
 
   // LOGIN
   const handleLogin = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+  e.preventDefault();
+  setLoading(true);
 
-    const formData = new FormData(e.target);
-    const { email, password } = Object.fromEntries(formData);
+  const formData = new FormData(e.target);
+  const { email, password } = Object.fromEntries(formData);
 
-    try {
-      const res = await signInWithEmailAndPassword(auth, email, password);
+  try {
+    // Sign in user
+    const res = await signInWithEmailAndPassword(auth, email, password);
 
-      // Reload user object to get the latest emailVerified state
-      await res.user.reload();
+    // Reload the user's auth state
+    await res.user.reload();
 
-      if (!auth.currentUser.emailVerified) {
-        toast.error("Email not verified. Check your inbox.");
-        await sendEmailVerification(auth.currentUser);
-        await signOut(auth);
-        return;
-      }
-
-      // User is verified — get user info from Firestore
-      const userDoc = await getDoc(doc(db, "users", res.user.uid));
-
-      if (!userDoc.exists()) {
-        toast.error("User data not found.");
-        return;
-      }
-
-      const userData = userDoc.data();
-      toast.success(`Welcome back, ${userData.username}!`);
-
-    } catch (err) {
-      console.log(err);
-      toast.error(err.message);
-    } finally {
-      setLoading(false);
+    // Check if the user's email is verified
+    if (!res.user.emailVerified) {
+      toast.error("Email not verified. Check your inbox.");
+      await sendEmailVerification(res.user); // Optionally resend verification
+      await signOut(auth); // Sign out unverified user
+      return;
     }
-  };
+
+    // Get user info from Firestore
+    const userDoc = await getDoc(doc(db, "users", res.user.uid));
+
+    if (!userDoc.exists()) {
+      toast.error("User data not found in Firestore.");
+      return;
+    }
+
+    const userData = userDoc.data();
+    toast.success(`Welcome back, ${userData.username}!`);
+
+  } catch (err) {
+    console.log(err);
+    toast.error(err.message);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className='login'>
